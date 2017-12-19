@@ -8,6 +8,8 @@ export default class ZmitiSnow {
 		this.context = option.cxt;
 		this.width = option.cxt.canvas.width;
 		this.height = option.cxt.canvas.height;
+		this.speedY = Math.random()*4+1;
+		this.speedX = Math.random()*2-.5;
 	}
 	draw(context) {
 		var opacity = this.opacity.toFixed(2);
@@ -19,8 +21,8 @@ export default class ZmitiSnow {
 	}
 	fly(fn) {
 
-		this.y += 3;;
-		this.x += .2;
+		this.y += this.speedY;
+		this.x += this.speedX;
 		fn && fn();
 		this.draw(this.context);
 

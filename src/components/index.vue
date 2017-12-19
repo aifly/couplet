@@ -124,20 +124,24 @@ export default {
   		var snowArr = [];
   		for(var i=0;i<400;i++){
   			snowArr.push(new ZmitiSnow({
-		  		x:Math.random()*this.viewW,y:-10,
+		  		x:Math.random()*this.viewW,
+          y:-10,
 		  		cxt:bgContext
 		  	}));
   		}
 
   		console.log(snowArr)
 
-  		var animation = requestAnimationFrame || webkitRequestAnimationFrame;
-  		//context.clearRect(0, 0, this.width, this.height)
 
-  		function render(){
+      window.snowArr  = snowArr;
+
+  		var animation = requestAnimationFrame || webkitRequestAnimationFrame;
+
+      function render(){
+  		    bgContext.clearRect(0, 0, self.viewW, self.viewH)
   			 snowArr.forEach(snow=>{
   			 	snow.fly(()=>{
-  			 		bgContext.drawImage(self.$refs['zmiti-cache-img'],0,0,self.viewW,self.viewH);
+  			 		//bgContext.drawImage(self.$refs['zmiti-cache-img'],0,0,self.viewW,self.viewH);
   			 	})
   			 })
   			animation(render)
