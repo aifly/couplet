@@ -8,10 +8,11 @@
 		width: 4rem;
 		@include pos(a);
 		left: 3rem;
+		z-index: 20;
 		bottom: 2rem;
 	}
 
-	.zmiti-bg-canvas {
+	.zmiti-cover-bg-canvas {
 		@include pos(a);
 		left: 0;
 		top: 0;
