@@ -1,0 +1,20 @@
+@import "./base.scss";
+
+.zmiti-cover-main-ui {
+	background: url(../../assets/cover.jpg) no-repeat center top;
+	background-size: cover;
+
+	.zmiti-begin-btn {
+		width: 4rem;
+		@include pos(a);
+		left: 3rem;
+		bottom: 2rem;
+	}
+
+	.zmiti-bg-canvas {
+		@include pos(a);
+		left: 0;
+		top: 0;
+	}
+
+}
