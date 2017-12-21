@@ -7,7 +7,7 @@
   		<img v-if='!src' src="../assets/cover1.jpg" height="1207" width="750">
   		<div v-if='src' class="zmiti-wish-img">
   			<h1 style="height: .4rem;"></h1>
-  			<div v-html="nickname" :style='{fontWeight:"bold"}'></div>
+  			<div v-html="decodeURI(sendNickname)" :style='{fontWeight:"bold"}'></div>
   			<div>赠予你一个大“福”字</div>
   			<img class="zmiti-wish-bg" src="../assets/wish-bg.png"/>
   			<img class="zmiti-wish-src" :src='src'/>
@@ -50,7 +50,7 @@
   	 <div class="zmiti-begin-btn" ref='btn' @click='entryIndex'>
       <img src='../assets/begin-btn.png' />
   	 </div>
-  	 <audio src='http://h5.zmiti.com/public/couplet/media/bg.mp3'   loop="loop" ref='bg-music'></audio>
+  	 <audio src='http://h5.zmiti.com/public/couplet/media/bg.mp3' autoplay  loop="loop" ref='bg-music'></audio>
   	 <canvas ref='bg-canvas' class="zmiti-cover-bg-canvas" :width='viewW' :height='viewH'></canvas>
   </div>
   </div>
@@ -81,6 +81,7 @@ export default {
       showTian:true,
       showSnowCanvas:false,
       showIndex:false,
+      sendNickname:"",
       beginSendWidth:false,
       showBtnGroup:true,
       bgPlay:false,
@@ -274,8 +275,8 @@ export default {
                  type: 'post',
                  data: {
                      setcontents: wishCanvas.toDataURL('image/png'),
-                     setimage_w: this.canvasSize,
-                     setimage_h: this.canvasSize
+                     setwidth: this.canvasSize|0,
+                     setheight: this.canvasSize|0
                  }
              }).done(data=>{
              	   if (data.getret === 0) {
@@ -299,8 +300,8 @@ export default {
                  type: 'post',
                  data: {
                      setcontents: this.reelContext.canvas.toDataURL(),
-                     setimage_w: this.viewW,
-                     setimage_h: this.viewH
+                     setwidth: this.viewW|0,
+                     setheight: this.viewH|0
                  }
              }).done(data=>{
              	   if (data.getret === 0) {
@@ -601,7 +602,7 @@ export default {
 		var nickname = s.getQueryString('nickname');
 		var src = s.getQueryString('src');
 
-		this.nickname = nickname;
+		this.sendNickname = nickname;
 		this.src = src;
 
 
