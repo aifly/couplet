@@ -84,12 +84,11 @@ input, textarea {
   top: 3.2rem;
   z-index: 21; }
   #canvas.active {
-    -webkit-transition: -webkit-transform 0.4s;
-    transition: -webkit-transform 0.4s;
-    transition: transform 0.4s;
-    transition: transform 0.4s, -webkit-transform 0.4s;
-    -webkit-transform: translate3d(-50%, 0, 0) rotate(180deg);
-    transform: translate3d(-50%, 0, 0) rotate(180deg); }
+    -webkit-transition: 1s;
+    transition: 1s;
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, 0, 0) scale(1.5);
+    transform: translate3d(-50%, 0, 0) scale(1.5); }
 
 .zmiti-mask {
   background: rgba(87, 3, 0, 0.6);
@@ -109,8 +108,8 @@ input, textarea {
   .zmiti-generate-img.active {
     -webkit-transform-origin: center 30%;
     transform-origin: center 30%;
-    -webkit-transform: scale(0.8) translate3d(0, 0, 10px);
-    transform: scale(0.8) translate3d(0, 0, 10px);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
     -webkit-transition: -webkit-transform 0.5s;
     transition: -webkit-transform 0.5s;
     transition: transform 0.5s;

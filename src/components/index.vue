@@ -4,7 +4,7 @@
 
   	<div  class="zmiti-bg-canvas" :style="{width:viewW+'px',height:viewH+'px'}" :width='viewW' :height='viewH'>
   		<img v-if='src' src='../assets/cover.png' />
-  		<img v-if='!src' src="../assets/cover1.jpg" height="1207" width="750">
+  		<img v-if='!src && !isshare' src="../assets/cover1.jpg" height="1207" width="750">
   		<div v-if='src' class="zmiti-wish-img">
   			<h1 style="height: .4rem;"></h1>
   			<div v-html="decodeURI(sendNickname)" :style='{fontWeight:"bold"}'></div>
@@ -71,6 +71,7 @@ export default {
       lineMax:40,
       linePressure:2.5,
       removeCanvas:false,
+      isshare:false,
       canvasSize:0,
       nickname:'',
 	  showgenerateImg:false,
@@ -255,21 +256,22 @@ export default {
   		this.showTian = false;
   		this.showBtnGroup = false,
   		this.showSnowCanvas = true;
+  		this.isshare = true;
   		setTimeout(()=>{
   			this.removeCanvas = true;
 
   			this.shareSnow();
 
-  			this.reelContext.translate(this.viewW/2+this.canvasSize/2,this.ctx.canvas.offsetTop+this.canvasSize)
+  			//this.reelContext.translate(this.viewW/2+this.canvasSize/2,this.ctx.canvas.offsetTop+this.canvasSize)
 	  		this.reelContext.save();
 	  		
-	  		this.reelContext.rotate(180*Math.PI/180)
-	  		this.reelContext.drawImage(this.ctx.canvas,0,0);
+	  		//this.reelContext.rotate(180*Math.PI/180)
+	  		this.reelContext.drawImage(this.ctx.canvas,this.viewW/2-this.canvasSize/2,3.2*this.viewW /10);
 	  		this.reelContext.restore();
 	  		this.$refs['photo'].play();
 
 	  		var wishCanvas = this.$refs['canvas'];
-	  		//this.filterOpacity(wishCanvas);
+
 	  		$.ajax({
                  url: 'http://api.zmiti.com/v2/share/base64_image/',
                  type: 'post',
@@ -323,7 +325,7 @@ export default {
 
 
 
-  		},500)
+  		},1200)
   		
 
   	},
@@ -661,7 +663,7 @@ export default {
 
 <style scoped>
 	.zmiti-cover-main-ui{
-		/* background: url(http://h5.zmiti.com/public/couplet/static/img/cover.png) no-repeat center top;
-		background-size: cover; */
+	/* 	background: url(../assets/cover.png) no-repeat center top;
+	background-size: cover; */
 	}
 </style>

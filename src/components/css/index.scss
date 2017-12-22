@@ -77,8 +77,9 @@ input, textarea {
 	z-index: 21;
 
 	&.active {
-		@include transition_transform(.4s);
-		@include transform(translate3d(-50%, 0, 0) rotate(180deg));
+		@include transition(1s);
+		opacity: 0;
+		@include transform(translate3d(-50%, 0, 0) scale(1.5));
 	}
 
 }
@@ -105,7 +106,7 @@ input, textarea {
 
 	&.active {
 		@include transformOrigin(center 30%);
-		@include transform(scale(.8) translate3d(0, 0, 10px));
+		@include transform(scale(.8));
 		@include transition_transform(.5s);
 
 		&:after {
