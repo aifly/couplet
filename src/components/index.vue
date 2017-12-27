@@ -7,7 +7,7 @@
   		<img v-if='!src && !isshare' src="../assets/cover1.jpg" height="1207" width="750">
   		<div v-if='src' class="zmiti-wish-img">
   			<h1 style="height: .4rem;"></h1>
-  			<div v-html="decodeURI(sendNickname)" :style='{fontWeight:"bold"}'></div>
+  			<div v-html="'*****'" :style='{fontWeight:"bold"}'></div>
   			<div>赠予你一个大“福”字</div>
   			<img class="zmiti-wish-bg" src="../assets/wish-bg.png"/>
   			<img class="zmiti-wish-src" :src='src'/>
@@ -289,13 +289,13 @@ export default {
                            var nickname = this.nickname;
 
                            var URI = window.location.href.split('#')[0];
-  							URI = this.changeURLPar(URI, 'nickname', nickname);
-  							URI = this.changeURLPar(URI, 'src', src);
-                nickname ='Egret'
-  							this.wxConfig('收到'+nickname+'为你写的"福"字','快打开看看吧',URI);
-                       
-                       }
-               })
+        							URI = this.changeURLPar(URI, 'nickname', nickname);
+        							URI = this.changeURLPar(URI, 'src', src);
+                      nickname ='*****'
+        							this.wxConfig('收到'+nickname+'为你写的"福"字','快打开看看吧',URI);
+                             
+                             }
+                     })
   	  	
   	  		 $.ajax({
                    url: 'http://api.zmiti.com/v2/share/base64_image/',
@@ -541,7 +541,7 @@ export default {
   						nickname: s.nickname,
   						headimgurl: s.headimgurl
   					}
-            s.nickname = 'Egret';
+            s.nickname = '*****';
   					s.wxConfig('收到'+s.nickname+'为你写的"福"字','快打开看看吧');
   					
 
@@ -653,7 +653,7 @@ export default {
   		reelContext.drawImage(this.$refs['f1'],this.viewW - 70,0,70,53);
   		reelContext.drawImage(this.$refs['f2'],0,this.viewH/3,57,99);
 
-  		this.getOauthurl();
+  		//this.getOauthurl();
   		this.wxConfig('春节送祝福','春节送祝福，快来看看吧');
   		
   	}.bind(this) 
